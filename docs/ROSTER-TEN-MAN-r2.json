@@ -1,0 +1,628 @@
+{
+  "doc": "ROSTER-TEN-MAN-r2",
+  "stamp": "2026-11-01 20:31:51 Asia/Shanghai",
+  "supersedes": "ROSTER-TEN-MAN-r1",
+  "grounding": [
+    "FULL-DUEL-SIM-TABLE-r1",
+    "HATE-AI-GROUNDING-r1",
+    "SIMULATION-HONESTY-r1",
+    "ROSTER-NO-GM-r1",
+    "raid-live/full-books.json",
+    "players-from-backend-binding.json"
+  ],
+  "constraints": {
+    "no_gm": true,
+    "no_LearnMagic": true,
+    "no_paper_job_fit": true,
+    "no_healer_job_hate_bias": true,
+    "healers_must_safe": true,
+    "ban_stack_healers_in_aoe": true,
+    "circle_le_4": true,
+    "must_martial_taunt": true,
+    "f1_second_martial_swap": "REQUIRED_AS_FAR_AS_POOL_ALLOWS",
+    "swap_taunt_before_A_dies": true,
+    "ban_dual_tank_10513_same_time": true,
+    "main_path": "control_10837 -> paper_10712/10821 else_11125",
+    "lure_roar_11102": "demoted_fallback",
+    "native_invuln_pharmacist": false
+  },
+  "book_truth_r2": {
+    "jiuyue": {
+      "10513": 31,
+      "10954": 33,
+      "10852": 30,
+      "10536": 34,
+      "10850": 0,
+      "status": "VERIFIED"
+    },
+    "helen1": {
+      "10856": 15,
+      "invuln": "ABSENT",
+      "status": "VERIFIED_WEAK_HEAL"
+    },
+    "nana": {
+      "10837": 37,
+      "10836": 38,
+      "10628": 50,
+      "status": "VERIFIED_BOOK_LIVE_SOFT_FAIL_10837"
+    },
+    "nana1": {
+      "10712": 6,
+      "10821": 8,
+      "10815": 9,
+      "paper6044": "ABSENT_0",
+      "status": "VERIFIED_BOOK_GATED_PAPER"
+    },
+    "A88888": {
+      "11125": 4,
+      "10703": 2,
+      "10848": 3,
+      "status": "VERIFIED_LIVE_AUX_DRAIN"
+    },
+    "boyzyw": {
+      "10852": 30,
+      "10850": 0,
+      "10513": null,
+      "10954": null,
+      "status": "TAUNT_ABSENT_CONFIRMED"
+    },
+    "helen2_slot0_modao_in_full_books": {
+      "note": "full-books.json helen2 = slot0 魔刀技，非药师"
+    },
+    "helen2_slot1": {
+      "10856": 15,
+      "invuln": "ABSENT",
+      "status": "VERIFIED_WEAK_HEAL_SAFE_ONLY",
+      "evidence": "helen2-slot1-book-invuln-probe.json"
+    },
+    "sxsxzzz6": {
+      "10837": null,
+      "10836": null,
+      "status": "ROOT_ABSENT_CONFIRMED"
+    },
+    "ariesfei": {
+      "10712": 6,
+      "10821": 8,
+      "10815": 9,
+      "status": "VERIFIED_BOOK_GATED_PAPER"
+    },
+    "m4ak83": {
+      "10703": 2,
+      "11125": null,
+      "10848": null,
+      "status": "CLOSED_NO_11125",
+      "evidence": "ROSTER-B-BOOKS-r2"
+    },
+    "helen3_slot0": {
+      "voc": "武术家 风之云 lv33",
+      "10513": 31,
+      "10954": 33,
+      "10852": 30,
+      "10536": 34,
+      "10850": 0,
+      "status": "CLOSED_YES_HAS_TAUNT",
+      "evidence": "ROSTER-B-BOOKS-r2 live 0x0283"
+    },
+    "helen3_slot1": {
+      "voc": "阴阳 风之雨 lv50",
+      "10837": null,
+      "10836": null,
+      "status": "CLOSED_NO_ROOT",
+      "slot_map_n": 17,
+      "evidence": "ROSTER-B-BOOKS-r2"
+    },
+    "helen": {
+      "10102": 35,
+      "10626": 36,
+      "10052": 60,
+      "status": "VERIFIED_BREAK_FLEX"
+    },
+    "jiujiu": {
+      "voc": "阴阳 天天 lv53",
+      "10837": null,
+      "10836": null,
+      "status": "CLOSED_NO_ROOT",
+      "slot_map_n": 11,
+      "evidence": "ROSTER-B-BOOKS-r2"
+    },
+    "paper6044": {
+      "any": 0,
+      "broad_hits": [],
+      "status": "CLOSED_ABSENT_0",
+      "evidence": "LIS kv full sweep ROSTER-B-BOOKS-r2"
+    }
+  },
+  "r1_voided_paper_gaps": [
+    {
+      "id": "V1",
+      "r1_claim": "B.tank=boyzyw 可作武术换坦候补",
+      "void_reason": "full-books 已落：boyzyw 有 10852/10850 等，但 10513/10954 ABSENT → 无法落实 F1 换嘲",
+      "replacement": "B.tank 主候选改 helen3/slot0（binding 武术家）；boyzyw 降为 TAUNT_ABSENT 不可换嘲"
+    },
+    {
+      "id": "V2",
+      "r1_claim": "B.control=sxsxzzz6 阴阳定身候补",
+      "void_reason": "full-books：无 10837/10836",
+      "replacement": "B.control 座 OPEN（jiujiu / helen3/slot1 等须核活页）；sxsxzzz6 标 ROOT_ABSENT"
+    },
+    {
+      "id": "V3",
+      "r1_claim": "同职五人候补已「纸面齐」可轮换",
+      "void_reason": "HONESTY H8 / 表算：B 队多职未钉；禁纸面职配",
+      "replacement": "仅 book/LIVE 钉死的座可写 VERIFIED；其余 OPEN_ACCOUNT_LIVE"
+    },
+    {
+      "id": "V4",
+      "r1_claim": "多加药师/堆奶可防团灭或偏置仇恨",
+      "void_reason": "HATE-AI + FULL-DUEL：无药师职业偏置；叠圈奶↑=AOE 尸体↑（F2 TABLE_CONFIRMED）",
+      "replacement": "奶×1～2 全程 SAFE；禁叠圈堆奶"
+    },
+    {
+      "id": "V5",
+      "r1_claim": "helen2 full-books 可当 B 奶书",
+      "void_reason": "full-books helen2 条目实为 slot0 魔刀；药师是 slot1 探针书",
+      "replacement": "B.heal=helen2/slot1 弱奶 SAFE；禁把 slot0 魔刀书当奶"
+    },
+    {
+      "id": "V6",
+      "r1_claim": "OPTIMAL 已证控得住+不团灭",
+      "void_reason": "SIMULATION-HONESTY：短探针≠LIVE_FULL_DUEL；10837 soft-fail",
+      "replacement": "编制标签 TABLE_GROUNDED + LIVE_PARTIAL；主路径仍控场→抽蓝"
+    },
+    {
+      "id": "V7",
+      "r1_claim": "缺第二武术可先开打",
+      "void_reason": "FULL-DUEL F1 PAPER_RISK：A 坦死后无第二嘲讽 → 转火近距抽灵/刺客",
+      "replacement": "F1 硬门：尽可能落实第二武术；未核活前 B 坦不可宣称可换嘲"
+    }
+  ],
+  "teams": [
+    {
+      "team_id": "A",
+      "name": "主攻抽灵队",
+      "status": "VERIFIED_CORE_TABLE_GROUNDED",
+      "size": 5,
+      "roles": {
+        "tank": {
+          "account": "jiuyue",
+          "slot": 0,
+          "voc": "武术家",
+          "principal": "1000030",
+          "skills": [
+            "10513@31",
+            "10954@33",
+            "10852@30",
+            "10536@34",
+            "10850@0"
+          ],
+          "duty": "唯一已证持嘲；短触唤醒后撤 SAFE；HP 危急前触发 F1 换嘲（A倒前）",
+          "status": "VERIFIED_LIVE_TAUNT"
+        },
+        "heal": {
+          "account": "helen1",
+          "slot": 0,
+          "voc": "药师",
+          "principal": "1000051",
+          "skills": [
+            "10856@15"
+          ],
+          "duty": "全程 SAFE 弱奶抬坦；禁进≤2000；禁 GM 无敌/甲",
+          "status": "VERIFIED_SAFE_ONLY",
+          "flags": [
+            "NO_NATIVE_INVULN",
+            "gm_probe_only_not_for_raid",
+            "MUST_SAFE"
+          ]
+        },
+        "control": {
+          "account": "nana",
+          "slot": 0,
+          "voc": "阴阳师",
+          "principal": "1",
+          "skills": [
+            "10837@37",
+            "10836@38",
+            "10628@50"
+          ],
+          "duty": "主控场；进圈短停≈1450；与坦/抽合计守圈内≤4",
+          "status": "VERIFIED_BOOK_LIVE_SOFT_FAIL"
+        },
+        "mana_drain": {
+          "account": "nana1",
+          "slot": 0,
+          "voc": "祭符师",
+          "principal": "1000068",
+          "skills": [
+            "10712@6",
+            "10821@8",
+            "10815@9"
+          ],
+          "duty": "有纸主抽；无纸本座不空放，改 A.ranged 11125",
+          "status": "VERIFIED_BOOK_GATED_6044",
+          "flags": [
+            "PAPER_6044_ABSENT_0"
+          ]
+        },
+        "ranged": {
+          "account": "A88888",
+          "slot": 0,
+          "voc": "刺客",
+          "principal": "1000090",
+          "skills": [
+            "11125@4",
+            "10703@2",
+            "10848@3",
+            "11279@9"
+          ],
+          "duty": "无纸默认辅抽 11125（LIVE mpΔ=-19）；有纸让位祭符主抽",
+          "status": "VERIFIED_LIVE_AUX_DRAIN"
+        }
+      }
+    },
+    {
+      "team_id": "B",
+      "name": "轮换候补队（表算硬门重编）",
+      "status": "F1_YES_CTRL_GAP_DRAIN_GATED",
+      "size": 5,
+      "roles": {
+        "tank": {
+          "account": "helen3",
+          "slot": 0,
+          "voc": "武术家",
+          "name": "风之云",
+          "level": 33,
+          "principal_hint": "binding helen3",
+          "skills": [
+            "10513@31",
+            "10954@33",
+            "10852@30",
+            "10536@34",
+            "10850@0"
+          ],
+          "duty": "F1 第二武术换坦候选；仅当已学嘲讽且 A 倒前单方 10513；禁与 jiuyue 同时嘲讽",
+          "status": "CLOSED_YES_F1_TAUNT",
+          "alts": [
+            {
+              "account": "boyzyw",
+              "status": "TAUNT_ABSENT_CONFIRMED",
+              "note": "full-books 无 10513/10954；有铁布不可充换嘲"
+            },
+            {
+              "account": "mz",
+              "status": "OPEN_NO_BOOK"
+            },
+            {
+              "account": "948102",
+              "status": "OPEN_NO_BOOK"
+            },
+            {
+              "account": "zhuzhu7125",
+              "status": "OPEN_NO_BOOK"
+            },
+            {
+              "account": "shuiwuyou1234",
+              "status": "OPEN_NO_BOOK"
+            },
+            {
+              "account": "wujia01",
+              "status": "OPEN_NO_BOOK"
+            }
+          ],
+          "evidence": "ROSTER-B-BOOKS-r2 / full-books helen3"
+        },
+        "heal": {
+          "account": "helen2",
+          "slot": 1,
+          "voc": "药师",
+          "name": "风之痕",
+          "principal": "1000058",
+          "skills": [
+            "10856@15",
+            "10858@0",
+            "10612@1",
+            "10616@2"
+          ],
+          "duty": "SAFE 弱奶冗余；禁进圈；不增加仇恨偏置",
+          "status": "VERIFIED_SAFE_ONLY",
+          "flags": [
+            "NO_NATIVE_INVULN",
+            "MUST_SAFE",
+            "NOT_SLOT0_MODAO"
+          ],
+          "alts": [
+            "sxsxzzz7",
+            "mz2",
+            "yy1",
+            "123456",
+            "cxy02"
+          ]
+        },
+        "control": {
+          "account": null,
+          "slot": null,
+          "voc": "阴阳师",
+          "name": "天天",
+          "level": 53,
+          "skills": [],
+          "duty": "GATED — 无 10837 替补；不要占圈",
+          "status": "GATED_NO_B_ROOT",
+          "failed_r1_primary": {
+            "account": "sxsxzzz6",
+            "status": "ROOT_ABSENT_CONFIRMED"
+          },
+          "alts": [
+            {
+              "account": "helen3",
+              "slot": 1,
+              "status": "OPEN_BOOK_LOGIN_OK_MULTI10"
+            },
+            {
+              "account": "sxsxzzz6",
+              "status": "ROOT_ABSENT_CONFIRMED"
+            },
+            {
+              "account": "mz1",
+              "status": "OPEN_NO_BOOK"
+            },
+            {
+              "account": "cxy01",
+              "status": "OPEN_NO_BOOK"
+            },
+            {
+              "account": "taishen",
+              "status": "OPEN_NO_BOOK"
+            }
+          ],
+          "note": "全池阴阳师除 A.nana 外无人 10837；B.control 取消常驻，仅 A.nana 控",
+          "failed_candidates": [
+            {
+              "account": "jiujiu",
+              "slot": 0,
+              "status": "CLOSED_NO_10837"
+            },
+            {
+              "account": "helen3",
+              "slot": 1,
+              "status": "CLOSED_NO_10837"
+            },
+            {
+              "account": "sxsxzzz6",
+              "status": "ROOT_ABSENT_CONFIRMED"
+            }
+          ]
+        },
+        "mana_drain": {
+          "account": "ariesfei",
+          "voc": "祭符师",
+          "skills": [
+            "10712@6",
+            "10821@8",
+            "10815@9"
+          ],
+          "duty": "有纸且 A 抽断档时短进；共享 6044；无纸不进空放",
+          "status": "VERIFIED_BOOK_GATED_6044",
+          "alts": [
+            "yuyu",
+            "austinrose",
+            "austinrose2",
+            "zm140613",
+            "15809008085A"
+          ]
+        },
+        "ranged": {
+          "account": "m4ak83",
+          "voc": "刺客",
+          "skills": [
+            "10703@2",
+            "11275@5",
+            "11276@6"
+          ],
+          "duty": "SAFE/远端；无 11125 → 不能替代辅抽；辅抽断档仍靠 A88888 或有纸祭符",
+          "status": "CLOSED_NO_11125",
+          "alts": [
+            {
+              "account": "sxsxzzz2",
+              "status": "OPEN_NO_BOOK"
+            },
+            {
+              "account": "w274819029",
+              "status": "OPEN_NO_BOOK"
+            },
+            {
+              "account": "z52684013",
+              "status": "OPEN_NO_BOOK"
+            }
+          ],
+          "evidence": "ROSTER-B-BOOKS-r2 m4ak83"
+        }
+      },
+      "size_effective": 4,
+      "control_gated": true
+    }
+  ],
+  "flex_bench": [
+    {
+      "account": "helen",
+      "voc": "修罗医师",
+      "role": "break_amp_optional_4th_in_circle",
+      "skills": [
+        "10102@35",
+        "10626@36",
+        "10743@30",
+        "10052@60"
+      ],
+      "note": "可作圈内第4人短进破防；护驾只用10052；计入≤4",
+      "status": "VERIFIED"
+    },
+    {
+      "account": "12345",
+      "voc": "魔刀客",
+      "role": "melee_after_mp_empty",
+      "status": "BENCH"
+    },
+    {
+      "account": "sxsxzzz5",
+      "voc": "剑客",
+      "role": "melee_after_mp_empty",
+      "status": "BENCH"
+    },
+    {
+      "account": "helen0",
+      "voc": "枪客?",
+      "role": "melee_bench",
+      "status": "BENCH"
+    },
+    {
+      "account": "helen2",
+      "slot": 0,
+      "voc": "魔刀",
+      "role": "NOT_HEAL_BOOK",
+      "note": "full-books 该账号默认条目；开团奶用 slot1"
+    }
+  ],
+  "f1_swap_protocol": {
+    "name": "第二武术换坦",
+    "required": true,
+    "steps": [
+      "监测 A.jiuyue HP；物理中位约4179，HP5771→一次后残≈1592",
+      "残血/资源枯前：B 第二武术（须已学10513）短进",
+      "仅 B 放 10513；A 禁止再放 10513（F5）",
+      "A 撤 SAFE 或尸体；B 持仇后同样短触即撤，勿久贴",
+      "若 B.tank 仍 OPEN/无嘲讽：禁止宣称可换坦；优先保 jiuyue 存活+定身窗抽蓝"
+    ],
+    "current_blocker": "CLEARED_helen3_s0_has_10513_10954 — 待 LIVE 换嘲短验；禁双10513",
+    "second_tank": {
+      "account": "helen3",
+      "slot": 0,
+      "skills": {
+        "10513": 31,
+        "10954": 33
+      },
+      "status": "BOOK_CLOSED_YES"
+    },
+    "live_short": {
+      "stamp": "2026-11-01 20:40:38 Asia/Shanghai",
+      "verdict": "FAIL_NO_RESOLVE",
+      "resolve_10513": false,
+      "hate_path": "UNPROVEN",
+      "evidence": "/workspace/swdol-smoke/algo-hate-20261031-r10/fork6-inject-r58/allclass-magic/raid-open-r1/raid-live/HELEN3-TAUNT-SWAP-r1.md",
+      "retry": "principal_soft_clear"
+    }
+  },
+  "anti_wipe_rules": [
+    "R1 圈内≤4（坦短触1+控1+抽1+可选破防1）；其余 SAFE≫12000",
+    "R2 同时仅一坦 10513；A倒前换嘲；禁双坦同嘲（F5）",
+    "R3 奶必须 SAFE；禁叠圈堆奶（F2）；无药师职业仇恨偏置",
+    "R4 两控禁止同时进圈；B 控仅 A 断档接力",
+    "R5 叠十人≤2000 → 啸+物理实质团灭（F3 TABLE_CONFIRMED）",
+    "R6 主路径：10837→有纸10712/10821否则11125；诱啸降权",
+    "R7 6044=0 禁祭符空放；弹药门守 11125",
+    "R8 魔尽前禁近战职业贴脸；MP@+0xa40 oracle",
+    "R9 禁战斗 logout",
+    "R10 禁 GM 授书无敌/甲/嘲讽",
+    "R11 Team B 未核活页座只可 SAFE 候补，不可写死可上场技",
+    "R12 F1 未落实前视为软炸团风险 OPEN，不粉饰"
+  ],
+  "choreography": {
+    "mode": "2_team_rotation_not_10_stack",
+    "phase": [
+      "全员 SAFE；奶永不进圈",
+      "仅 A：短触嘲讽→定身→（有纸祭符｜无纸11125）",
+      "可选 helen 破防为圈内第4",
+      "B 默认 SAFE；仅断档一人短进",
+      "F1：A 危急前第二武术单方换嘲",
+      "MP 门后再近战板凳"
+    ]
+  },
+  "open_account_live_checks": [
+    {
+      "id": "OPEN-F1-HELEN3-S0",
+      "account": "helen3",
+      "slot": 0,
+      "was": "OPEN_BOOK_VERIFY_REQUIRED_F1",
+      "now": "CLOSED_YES",
+      "result": "HAS 10513@31 / 10954@33 / 10852@30 / 10536@34",
+      "path": "/workspace/swdol-smoke/algo-hate-20261031-r10/fork6-inject-r58/allclass-magic/raid-open-r1/raid-live/ROSTER-B-BOOKS-r2.md"
+    },
+    {
+      "id": "OPEN-PAPER-6044",
+      "was": "OPEN",
+      "now": "CLOSED_ABSENT_0",
+      "result": "指定池+全库 inventory 键 6044 qty=0；A88888 ammo6524=25",
+      "path": "/workspace/swdol-smoke/algo-hate-20261031-r10/fork6-inject-r58/allclass-magic/raid-open-r1/raid-live/ROSTER-B-BOOKS-r2.md"
+    },
+    {
+      "id": "OPEN-RANGED-11125",
+      "account": "m4ak83",
+      "was": "PARTIAL / OPEN B aux",
+      "now": "CLOSED_NO_ON_B",
+      "result": "m4ak83 无 11125；B 侧辅抽仍无；A.A88888 有但不算 B",
+      "path": "/workspace/swdol-smoke/algo-hate-20261031-r10/fork6-inject-r58/allclass-magic/raid-open-r1/raid-live/ROSTER-B-BOOKS-r2.md"
+    },
+    {
+      "id": "OPEN-TANK-ALTS",
+      "status": "DEPRIORITIZED",
+      "note": "F1 主候选 helen3/s0 已 CLOSED_YES；alts 仅后备"
+    },
+    {
+      "id": "OPEN-LIVE-10837-STABLE",
+      "status": "STILL_OPEN",
+      "need": "A.nana 定身稳 RESOLVE（现网 soft-fail）",
+      "priority": 1
+    },
+    {
+      "id": "OPEN-CTRL-B-ALTS",
+      "was": "STILL_OPEN",
+      "now": "CLOSED_GATED_NONE",
+      "result": "holders_beyond_nana=[]",
+      "path": "/workspace/swdol-smoke/algo-hate-20261031-r10/fork6-inject-r58/allclass-magic/raid-open-r1/raid-live/SCAN-10837-POOL-r1.md"
+    },
+    {
+      "id": "OPEN-F1-LIVE-SWAP",
+      "was": "STILL_OPEN",
+      "now": "CLOSED_FAIL",
+      "result": "FAIL_NO_RESOLVE"
+    }
+  ],
+  "paths_for_parallel_agents": {
+    "roster_ten_man_r2_md": "/workspace/swdol-smoke/algo-hate-20261031-r10/fork6-inject-r58/allclass-magic/raid-open-r1/ROSTER-TEN-MAN-r2.md",
+    "roster_ten_man_r2_json": "/workspace/swdol-smoke/algo-hate-20261031-r10/fork6-inject-r58/allclass-magic/raid-open-r1/ROSTER-TEN-MAN-r2.json",
+    "roster_ten_man_r1_md": "/workspace/swdol-smoke/algo-hate-20261031-r10/fork6-inject-r58/allclass-magic/raid-open-r1/ROSTER-TEN-MAN-r1.md",
+    "roster_no_gm": "/workspace/swdol-smoke/algo-hate-20261031-r10/fork6-inject-r58/allclass-magic/raid-open-r1/ROSTER-NO-GM-r1.md",
+    "full_duel": "/workspace/swdol-smoke/algo-hate-20261031-r10/fork6-inject-r58/allclass-magic/raid-open-r1/FULL-DUEL-SIM-TABLE-r1.md",
+    "hate_grounding": "/workspace/swdol-smoke/algo-hate-20261031-r10/fork6-inject-r58/allclass-magic/raid-open-r1/raid-live/HATE-AI-GROUNDING-r1.md",
+    "honesty": "/workspace/swdol-smoke/algo-hate-20261031-r10/fork6-inject-r58/allclass-magic/raid-open-r1/SIMULATION-HONESTY-r1.md",
+    "full_books": "/workspace/swdol-smoke/algo-hate-20261031-r10/fork6-inject-r58/allclass-magic/raid-open-r1/raid-live/full-books.json",
+    "binding": "/workspace/swdol-smoke/algo-hate-20261031-r10/fork6-inject-r58/allclass-magic/raid-open-r1/players-from-backend-binding.json",
+    "paths_index": "/workspace/swdol-smoke/algo-hate-20261031-r10/fork6-inject-r58/allclass-magic/raid-open-r1/PARALLEL-AGENT-PATHS-r1.md",
+    "optimal_combo": "/workspace/swdol-smoke/algo-hate-20261031-r10/fork6-inject-r58/allclass-magic/raid-open-r1/OPTIMAL-RAID-COMBO-r1.md"
+  },
+  "verdict": "ROSTER_R2_CTRL_SCAN — 10837 holders=1 (beyond_nana=0); B.control=GATED A.nana-only; F1_live=FAIL_NO_RESOLVE",
+  "stamp_books_verify": "2026-11-01 20:35:25 Asia/Shanghai",
+  "books_verify_evidence": "/workspace/swdol-smoke/algo-hate-20261031-r10/fork6-inject-r58/allclass-magic/raid-open-r1/raid-live/ROSTER-B-BOOKS-r2.md",
+  "root_10837_scan": {
+    "stamp": "2026-11-01 20:39:37 Asia/Shanghai",
+    "holders": [
+      {
+        "account": "nana",
+        "slot": 0,
+        "slot_10837": 37,
+        "level": 60,
+        "method": "full-books"
+      }
+    ],
+    "scanned_n": 19,
+    "b_control_pinnable": false,
+    "gated": true,
+    "downgrade": {
+      "mode": "A_NANA_ONLY_CONTROL",
+      "rules": [
+        "B 队不设控位常驻（或改 flex SAFE）",
+        "定身窗仅 A.nana 10837；CD/拒放则停抽撤 SAFE，不硬进圈",
+        "圈内≤3（坦短触+抽/刺客+可选破防），为 nana 留位",
+        "禁第二人无定身冒充控"
+      ]
+    },
+    "evidence": "/workspace/swdol-smoke/algo-hate-20261031-r10/fork6-inject-r58/allclass-magic/raid-open-r1/raid-live/SCAN-10837-POOL-r1.md"
+  }
+}
